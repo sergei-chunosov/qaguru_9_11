@@ -10,7 +10,7 @@ def test_add_form():
         registration_page.open()
 
     with allure.step('Заполняем форму'):
-        registration_page.fill_form(user=user)
+        registration_page.fill_form(user)
 
     with allure.step('Проверяем форму'):
-        registration_page.assert_form(user=user)
+        registration_page.assert_form(user)
