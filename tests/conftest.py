@@ -1,6 +1,6 @@
 # from selenium import webdriver
 # from selenium.webdriver.chrome.options import Options
-from selene import Browser, Config
+from selene import browser, Config
 from selenium.webdriver.chrome.options import Options
 import pytest
 from selenium import webdriver
@@ -24,7 +24,7 @@ def setup_browser(request):
         options=options
     )
 
-    browser = Browser(Config(driver))
+    browser.config.driver = driver
     yield browser
 
     # attach.add_screenshot(browser)
