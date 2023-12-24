@@ -2,11 +2,13 @@ from selene import browser, have, command
 import os
 
 from data.user_data import User
+from tests.conftest import setup_browser
 
 
 class RegistrationPage:
 
-    def open(self):
+    def open(self, setup_browser):
+        browser = setup_browser
         browser.open('automation-practice-form')
         browser.all('[id^=google_ads]').with_(timeout=10).wait_until(
             have.size_less_than_or_equal(3)
