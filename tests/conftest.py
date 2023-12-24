@@ -2,7 +2,6 @@ from selene import browser
 from selenium.webdriver.chrome.options import Options
 import pytest
 from selenium import webdriver
-
 from utils import attach
 
 @pytest.fixture(scope='function', autouse=True)
@@ -29,9 +28,9 @@ def setup_browser():
     browser.config.timeout = 4
     yield browser
 
-    # attach.add_screenshot(browser)
-    # attach.add_logs(browser)
-    # attach.add_html(browser)
-    # attach.add_video(browser)
+    attach.add_screenshot(browser)
+    attach.add_logs(browser)
+    attach.add_html(browser)
+    attach.add_video(browser)
 
     browser.quit()
