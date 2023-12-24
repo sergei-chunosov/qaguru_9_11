@@ -19,7 +19,9 @@ class RegistrationPage:
         browser.element('#userEmail').type(user.email)
         browser.all('[name=gender]').element_by(have.value(user.gender)).element('..').click()
         browser.element('#userNumber').type(user.phone)
-        browser.element('#currentAddress').type(user.address)
+
+
+
         browser.element('#dateOfBirthInput').click()
         browser.element('.react-datepicker__month-dropdown-container').click()
         browser.all('.react-datepicker__month-dropdown-container select option').element_by(
@@ -34,12 +36,15 @@ class RegistrationPage:
         browser.all('.custom-checkbox').element_by(have.exact_text(user.hobby)).perform(
             command.js.scroll_into_view).click()
 
+        browser.element('#currentAddress').type(user.address)
+
         picture_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), '..', 'resources', user.picture)
         browser.element('#uploadPicture').send_keys(os.path.abspath(picture_path))
 
+
+
         browser.element('#state').click().element('#react-select-3-option-2').should(
-            have.exact_text(user.state)).click().perform(
-            command.js.scroll_into_view).click()
+            have.exact_text(user.state)).click()
 
         browser.element('#city').click().element('#react-select-4-option-0').should(have.exact_text(user.city)).click()
         browser.element('#submit').press_enter()
